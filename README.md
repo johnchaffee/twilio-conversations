@@ -1,3 +1,34 @@
+I added the scripts folder. How to get it running:
+
+```
+# Change to the /scripts directory
+cd scripts
+
+# Delete all existing conversations (just to clean things up)
+./delete-conv.sh
+
+# Create a new conversation, create a Zipwhip User web chat token
+# Add the Zipwhip User web chat client and John's mobile phone as participants
+./create-conv.sh
+
+# Copy the token that is ouput and paste into line 71 (`const myToken`) of ``src/ConversationsApp.js`.
+
+# Change to the root directory and run npm start
+cd ..
+npm start
+
+# You may want to delete conversations when done
+cd scripts
+./delete-conv.sh
+
+```
+
+You should be able to send messages from web browser to John's mobile.
+
+> Original ReadMe below:
+
+---
+
 # The Demo Conversations App
 
 This is a lightweight application based on [Twilio Conversations](https://www.twilio.com/docs/conversations).
