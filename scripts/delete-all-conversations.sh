@@ -7,14 +7,13 @@ set -o allexport; source ../.env; set +o allexport
 echo "=== DELETE-ALL-CONVERSATIONS ==="
 
 # Get all the conversation SIDs, they will be surrounded by quotes
-CONVERSATIONS=`twilio api:conversations:v1:conversations:list -o json | jq '.[].sid'`
+CONVERSATIONS=`twilio api:conversations:v1:conversations:list -o json | jq '.[].sid' | cut -c2-35`
 
-echo "CONVERSATIONS: \n$CONVERSATIONS"
+echo "CONVERSATIONS: \n\033[0;32m$CONVERSATIONS\033[0m"
 
-# Loop through each sid, one per line, remove the surrounding quotes, and delete the conversation
+# Loop through each conversation sid, one per line, and delete the conversation
 while IFS= read -r line; do
   # echo "LINE: $line"
-  SID=`echo $line | cut -c2-35`
-  echo "Delete sid: $SID"
-  twilio api:conversations:v1:conversations:remove --sid $SID
+  echo "DELETE: \033[0;32m$line\033[0m"
+  twilio api:conversations:v1:conversations:remove --sid $line
 done <<< "$CONVERSATIONS"
