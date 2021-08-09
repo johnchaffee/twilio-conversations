@@ -14,6 +14,8 @@ import { HeaderItem } from "./HeaderItem";
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
 
+const twilioAccessToken = "";
+
 class ConversationsApp extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +70,7 @@ class ConversationsApp extends React.Component {
 
   getToken = () => {
     // Paste your unique Chat token function
-    const myToken = "<Your token here>";
+    const myToken = twilioAccessToken;
     this.setState({ token: myToken }, this.initConversations);
   };
 
