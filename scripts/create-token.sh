@@ -14,10 +14,7 @@ TOKEN=`twilio token:chat \
 --chat-service-sid "$CHAT_SERVICE_SID" \
 --identity "$IDENTITY" \
 --ttl 86400 \
---profile jc \
+--profile default \
 -o json`
 
 echo $TOKEN | jq
-
-printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
-
