@@ -1,11 +1,25 @@
 This repo is forked from [TwilioDevEd/conversations-demo](https://github.com/TwilioDevEd/conversations-demo/tree/master/).
 
+## Changes
+
 I made the following changes:
 
-- Created a `twilioAccessToken` const in `/src/ConversationsApp.js` line 17 rather than having to paste it the `myToken` const on line 73.
-- Created a series of scripts in the `/scripts` folder for automating configuration of the demo. 
+- Added a `twilioAccessToken` const for pasting the token in `/src/ConversationsApp.js` line 17 rather than having to paste the token into the `myToken` const on line 73.
+- Created scripts in the `/scripts` folder to automate configuration of the demo. 
 
-Note: You must install the [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) and [jq](https://stedolan.github.io/jq/) to run the shell scripts.
+## Environment Variables
+
+You must create a `.env` file and populate it with the following environment variables, which are provided in the `.env.example` file:
+
+- `TWILIO_ACCOUNT_SID=`\<Your Twilio Account SID from the Twilio Console Dashboard>
+- `TWILIO_AUTH_TOKEN=`\<Your Twilio Auth Token from the Twilio Console Dashboard>
+- `TWILIO_CONVERSATIONS_PHONE_NUMBER=`\<Your Twilio Phone number in E.164 format (+12065551212)>
+- `MOBILE_PHONE_NUMBER=`\<Your Mobile phone number in E.164 format (+12065551212)>
+- `IDENTITY=`\<The identity or name (e.g. Chat Client) you want to use for your Chat client>
+
+## Automatic setup scripts
+
+You must install the [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) and [jq](https://stedolan.github.io/jq/) to run the shell scripts.
 
 To run the scripts:
 
@@ -14,25 +28,22 @@ cd <project folder>
 scripts/batch.sh
 ```
 
-1. Run the `batch.sh` script to batch process all of the scripts. It will run the following scipts in order:
-   - `delete-all-conversations.sh` - deletes all existing conversations to clean up and simplify participant management.
-   - `create-conversation.sh` - creates a new conversation container.
-   - `add-mobile-participant.sh` - adds a mobile user and proxy to the conversation.
-   - `add-chat-partipant.sh` - adds a chat participant to the conversation.
-   - `generate-token.sh` - generates a token for the chat participant. The TTL is 24 hours before you will need to create a new one.
-   - `send-message.sh` - creates the first message in the conversation.
-2. After running the scripts above you must copy/paste the token that is generated in step 5 to `src/ConversationsApp.js` line 17.
-3. Type `npm install` to install the app depencies. You only have to do this once.
-4. Then type `npm start` to start the chat client and begin your conversation.
-5. Repeate the steps above any time you want to start from a clean slate.
+The batch.sh script  will run the following scipts in order:
 
-Note: You must create a `.env` file and populate it with the following environment variables, which are provided in the `.env.example` file:
+- `delete-all-conversations.sh` - deletes all existing conversations to clean up and simplify participant management.
+- `create-conversation.sh` - creates a new conversation container.
+- `add-mobile-participant.sh` - adds a mobile user and proxy to the conversation.
+- `add-chat-partipant.sh` - adds a chat participant to the conversation.
+- `generate-token.sh` - generates a token for the chat participant. The TTL is 24 hours before you will need to create a new one.
+- `send-message.sh` - creates the first message in the conversation.
 
-- `TWILIO_ACCOUNT_SID=`\<Your Twilio Account SID from the Twilio Console Dashboard>
-- `TWILIO_AUTH_TOKEN=`\<Your Twilio Auth Token from the Twilio Console Dashboard>
-- `TWILIO_CONVERSATIONS_PHONE_NUMBER=`\<Your Twilio Phone number in E.164 format (+12065551212)>
-- `MOBILE_PHONE_NUMBER=`\<Your Mobile phone number in E.164 format (+12065551212)>
-- `IDENTITY=`\<The identity or name (e.g. Chat Client) you want to use for your Chat client>
+Repeat the steps above any time you want to start from a clean slate.
+
+## Running the app
+
+1. Type `npm install` to install the app depencies. You only have to do this once.
+2. After running the scripts above you must copy/paste the token that is generated for the `twilioAccessToken` variable in `src/ConversationsApp.js` line 17.
+3. Type `npm start` to start the chat client and begin your conversation.
 
 Original ReadMe appears below:
 
