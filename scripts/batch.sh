@@ -7,8 +7,8 @@ set -o allexport; source ../.env; set +o allexport
 echo "=== START BATCH ==="
 ./delete-all-conversations.sh
 ./create-conversation.sh
-./create-mobile-participant.sh
-./create-chat-participant.sh
-./create-token.sh
-./create-message.sh
+./add-mobile-participant.sh
+./add-chat-participant.sh
+./generate-token.sh
+./send-message.sh
 echo "=== END BATCH ==="
