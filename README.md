@@ -1,31 +1,36 @@
-I added the scripts folder. How to get it running:
+This repo is forked from [TwilioDevEd/conversations-demo](https://github.com/TwilioDevEd/conversations-demo/tree/master/).
 
-```
-# Change to the /scripts directory
-cd scripts
+I made the following changes:
 
-# Delete all existing conversations (just to clean things up)
-./delete-conv.sh
+- Created a `twilioAccessToken` const in `/src/ConversationsApp.js` line 17 rather than having to paste it the `myToken` const on line 73.
+- Created the following scripts in the `/scripts` folder for doing a quick demo. You must run them in the following order:
 
-# Create a new conversation, create a Zipwhip User web chat token
-# Add the Zipwhip User web chat client and John's mobile phone as participants
-./create-conv.sh
+1. `delete-all-conversations.sh` - deletes all existing conversations to simplify the participant management.
+2. `create-conversation.sh` - creates a new conversation container.
+3. `add-mobile-participant.sh` - adds a mobile user and proxy to the conversation.
+4. `add-chat-partipant.sh` - adds a chat participant to the conversation.
+5. `generate-token.sh` - generates a token for the chat participant. The TTL is 24 hours before you will need to create a new one.
+6. `send-message.sh` - creates the first message in the conversation.
 
-# Copy the token that is ouput and paste into line 71 (`const myToken`) of ``src/ConversationsApp.js`.
+Note: You can run the `batch.sh` script to batch perform all of the steps above in sequence.
 
-# Change to the root directory and run npm start
-cd ..
-npm start
-
-# You may want to delete conversations when done
-cd scripts
-./delete-conv.sh
-
+```bash
+cd <project folder>
+scripts/batch.sh
 ```
 
-You should be able to send messages from web browser to John's mobile.
+7. After running the scripts above you must copy/paste the token that is generated in step 5 to `src/ConversationsApp.js` line 17.
+8. Then type `npm install` followed by `npm start` to start the chat client and begin your conversation.
 
-> Original ReadMe below:
+Note: You must create a `.env` file and populate it with the following environment variables, which are provided in the `.env.example` file:
+
+- `TWILIO_ACCOUNT_SID=`\<Your Twilio Account SID from the Twilio Console Dashboard>
+- `TWILIO_AUTH_TOKEN=`\<Your Twilio Auth Token from the Twilio Console Dashboard>
+- `TWILIO_CONVERSATIONS_PHONE_NUMBER=`\<Your Twilio Phone number in E.164 format (+12065551212)>
+- `MOBILE_PHONE_NUMBER=`\<Your Mobile phone number in E.164 format (+12065551212)>
+- `IDENTITY=`\<The identity or name (e.g. Chat Client) you want to use for your Chat client>
+
+Original ReadMe appears below:
 
 ---
 
