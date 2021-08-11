@@ -41,9 +41,9 @@ Repeat the steps above any time you want to start from a clean slate.
 
 ## Running the app
 
-1. Type `npm install` to install the app depencies. You only have to do this once.
+1. Type `npm install` to install the app dependencies. You only have to do this once.
 2. After running the scripts above you must copy/paste the token that is generated for the `twilioAccessToken` variable in `src/ConversationsApp.js` line 17.
-3. Type `npm start` to start the chat client and begin your conversation.
+3. Type `npm start` to start the chat client. You can then send messages from the chat client and your mobile device to have a conversation.
 
 Original ReadMe appears below:
 
