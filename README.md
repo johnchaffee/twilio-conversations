@@ -3,24 +3,28 @@ This repo is forked from [TwilioDevEd/conversations-demo](https://github.com/Twi
 I made the following changes:
 
 - Created a `twilioAccessToken` const in `/src/ConversationsApp.js` line 17 rather than having to paste it the `myToken` const on line 73.
-- Created the following scripts in the `/scripts` folder for doing a quick demo. You must run them in the following order:
+- Created a series of scripts in the `/scripts` folder for automating configuration of the demo. 
 
-1. `delete-all-conversations.sh` - deletes all existing conversations to simplify the participant management.
-2. `create-conversation.sh` - creates a new conversation container.
-3. `add-mobile-participant.sh` - adds a mobile user and proxy to the conversation.
-4. `add-chat-partipant.sh` - adds a chat participant to the conversation.
-5. `generate-token.sh` - generates a token for the chat participant. The TTL is 24 hours before you will need to create a new one.
-6. `send-message.sh` - creates the first message in the conversation.
+Note: You must install the [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart) and [jq](https://stedolan.github.io/jq/) to run the shell scripts.
 
-Note: You can run the `batch.sh` script to batch perform all of the steps above in sequence.
+To run the scripts:
 
 ```bash
 cd <project folder>
 scripts/batch.sh
 ```
 
-7. After running the scripts above you must copy/paste the token that is generated in step 5 to `src/ConversationsApp.js` line 17.
-8. Then type `npm install` followed by `npm start` to start the chat client and begin your conversation.
+1. Run the `batch.sh` script to batch process all of the scripts. It will run the following scipts in order:
+   - `delete-all-conversations.sh` - deletes all existing conversations to clean up and simplify participant management.
+   - `create-conversation.sh` - creates a new conversation container.
+   - `add-mobile-participant.sh` - adds a mobile user and proxy to the conversation.
+   - `add-chat-partipant.sh` - adds a chat participant to the conversation.
+   - `generate-token.sh` - generates a token for the chat participant. The TTL is 24 hours before you will need to create a new one.
+   - `send-message.sh` - creates the first message in the conversation.
+2. After running the scripts above you must copy/paste the token that is generated in step 5 to `src/ConversationsApp.js` line 17.
+3. Type `npm install` to install the app depencies. You only have to do this once.
+4. Then type `npm start` to start the chat client and begin your conversation.
+5. Repeate the steps above any time you want to start from a clean slate.
 
 Note: You must create a `.env` file and populate it with the following environment variables, which are provided in the `.env.example` file:
 
