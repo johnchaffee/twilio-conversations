@@ -15,7 +15,8 @@ You must create a `.env` file and populate it with the following environment var
 - `TWILIO_AUTH_TOKEN=`\<Your Twilio Auth Token from the Twilio Console Dashboard>
 - `TWILIO_CONVERSATIONS_PHONE_NUMBER=`\<Your Twilio Phone number in E.164 format (+12065551212)>
 - `MOBILE_PHONE_NUMBER=`\<Your Mobile phone number in E.164 format (+12065551212)>
-- `IDENTITY=`\<The identity or name (e.g. Chat Client) you want to use for your Chat client>
+- `MOBILE_NAME=`\<Your name>
+- `IDENTITY=`\<The identity or name (e.g. Chat Agent) you want to use for your Chat client>
 
 ## Automatic setup scripts
 

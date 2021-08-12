@@ -4,9 +4,10 @@
 # https://stackoverflow.com/a/30969768/179329
 set -o allexport; source ../.env; set +o allexport
 
-echo "=== CREATE-CONVERSATION ==="
-CONVERSATION=`twilio api:conversations:v1:conversations:create --friendly-name "My Conversation" -o json`
-echo $CONVERSATION | jq
+echo "\033[0;32m=== CREATE-CONVERSATION ===\033[0m"
+echo "CONVERSATION: \033[0;32m$MOBILE_NAME\033[0m"
+CONVERSATION=`twilio api:conversations:v1:conversations:create --friendly-name "$MOBILE_NAME" -o json`
+# echo $CONVERSATION | jq
 
 # CONVERSATION_SID=`echo $CONVERSATION | jq '.[0] .sid' | cut -c2-35`
 # echo "CONVERSATION_SID: $CONVERSATION_SID"
