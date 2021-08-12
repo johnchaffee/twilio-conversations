@@ -4,7 +4,7 @@
 # https://stackoverflow.com/a/30969768/179329
 set -o allexport; source ../.env; set +o allexport
 
-echo "=== GET-LAST-CONVERSATION ==="
+echo "\033[0;32m=== GET-LAST-CONVERSATION ===\033[0m"
 CONVERSATION=`twilio api:conversations:v1:conversations:list -o json | jq 'sort_by(.dateCreated) | last'`
 echo $CONVERSATION | jq
 

@@ -4,7 +4,7 @@
 # https://stackoverflow.com/a/30969768/179329
 set -o allexport; source ../.env; set +o allexport
 
-echo "=== DELETE-ALL-CONVERSATIONS ==="
+echo "\033[0;32m=== DELETE-ALL-CONVERSATIONS ===\033[0m"
 
 # Get all the conversation SIDs, they will be surrounded by quotes
 CONVERSATIONS=`twilio api:conversations:v1:conversations:list -o json | jq '.[].sid' | cut -c2-35`

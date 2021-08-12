@@ -4,7 +4,7 @@
 # https://stackoverflow.com/a/30969768/179329
 set -o allexport; source ../.env; set +o allexport
 
-echo "=== CREATE-CHAT-TOKEN ==="
+echo "\033[0;32m=== CREATE-CHAT-TOKEN ===\033[0m"
 CHAT_SERVICE_SID=`twilio api:conversations:v1:conversations:list -o json | jq 'sort_by(.dateCreated) | last | .chatServiceSid' | cut -c2-35`
 echo "CHAT_SERVICE_SID: \033[0;32m$CHAT_SERVICE_SID\033[0m"
 echo "IDENTITY: \033[0;32m$IDENTITY\033[0m"
