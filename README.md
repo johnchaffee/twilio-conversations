@@ -1,3 +1,5 @@
+This is a sample app that demonstrates how to use the Twilio Conversations API to create a web chat client that sends/receives text messages to a mobile device. 
+
 This repo is forked from [TwilioDevEd/conversations-demo](https://github.com/TwilioDevEd/conversations-demo/tree/master/).
 
 ## Changes

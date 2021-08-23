@@ -6,7 +6,9 @@ set -o allexport; source ../.env; set +o allexport
 
 echo "\033[0;32m=== CREATE-CONVERSATION ===\033[0m"
 echo "CONVERSATION: \033[0;32m$MOBILE_NAME\033[0m"
-CONVERSATION=`twilio api:conversations:v1:conversations:create --friendly-name "$MOBILE_NAME" -o json`
+CONVERSATION=`twilio api:conversations:v1:conversations:create \
+--friendly-name "$MOBILE_NAME" \
+-o json`
 # echo $CONVERSATION | jq
 
 # CONVERSATION_SID=`echo $CONVERSATION | jq '.[0] .sid' | cut -c2-35`
